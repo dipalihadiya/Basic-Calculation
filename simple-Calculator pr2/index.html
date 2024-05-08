@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Purchase Bill</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <style>
+        button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+    </style>
+    <div class="container" style="  background: linear-gradient(to bottom,  #6dabe1 0%, #e96caa 100%); max-width: 400px;margin: 20px auto;padding: 20px;border: 1px solid #ccc;border-radius: 10px;font-family: Arial, sans-serif;">
+        <h2 style="font-size: 30px; font-weight: 600; margin-top: 30px; text-align: center;">Product Purchase Bill</h2>
+        <div class="form-group " style="margin-top: 50px;">
+            <label for="productName" style="display: inline-block;width: 150px;">Product Name:</label>
+            <input type="text" id="productName" class="form-input" style="width: 200px;padding: 5px;border-radius: 3px;border: 1px solid #ccc;">
+        </div>
+        <div class="form-group" style="margin-top: 30px;">
+            <label for="productPrice" style="display: inline-block;width: 150px;">Product Price:</label>
+            <input type="number" id="productPrice" class="form-input" style="width: 200px;padding: 5px;border-radius: 3px;border: 1px solid #ccc;">
+        </div>
+        <button onclick="generateBill()" style="margin-top: 50px; ">Generate Bill</button>
+        <div id="billDetails" class="bill-details" style="background-color: rgb(177, 177, 246); margin-top: 20px;padding: 10px;border: 1px solid #ccc;border-radius: 5px;"></div>
+    </div>
+
+
+    <script>
+        function generateBill() {
+
+    let productName = document.getElementById("productName").value;
+    let productPrice = (document.getElementById("productPrice").value);
+
+    let total = productPrice;
+
+    let discountPercent = 10;
+    let discount = (total * discountPercent) / 100;
+
+    let payableAmount = total - discount;
+
+    let billDetails = `
+        <p><strong>Product Name:</strong> ${productName}</p>
+        <p><strong>Product Price:</strong> $${productPrice}</p>
+        <p><strong>Total:</strong> $${total}</p>
+        <p><strong>Discount (${discountPercent}%):</strong> $${discount}</p>
+        <p><strong>Payable Amount:</strong> $${payableAmount}</p>
+    `;
+
+    document.getElementById("billDetails").innerHTML = billDetails;
+}
+
+    </script>
+</body>
+</html>
+
+
