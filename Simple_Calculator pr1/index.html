@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <style>
+        button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+    </style>
+    <div class="container" style=" background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%); justify-content: center; max-width: 400px;height: 400px;margin: 20px auto;padding: 30px;border: 2px solid #ccc;border-radius: 20px;font-family: sans-serif;">
+        <h2 style="font-size: 30px; margin-bottom: 50px;  text-align: center;">Simple Interest Calculator</h2>
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label for="principal" style="display: inline-block;width: 150px;">Principal Amount:</label>
+            <input type="number" id="principal" class="form-input" style=" width: 200px;padding: 5px;border-radius: 3px;border: 1px solid #ccc;">
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label for="rate" style="display: inline-block;width: 150px;">Rate of Interest (%):</label>
+            <input type="number" id="rate" class="form-input" step="0.01"  style=" width: 200px;padding: 5px;border-radius: 3px;border: 1px solid #ccc;">
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label for="years" style="display: inline-block;width: 150px;">Number of Years:</label>
+            <input type="number" id="years" class="form-input"  style=" width: 200px;padding: 5px;border-radius: 3px;border: 1px solid #ccc;">
+        </div>
+
+        <button onclick="calculate()" style="margin-top: 35px;">Calculate</button>
+        <div id="result" class="result" style="background-color: rgb(177, 177, 246); margin-top: 20px;padding: 10px;border: 1px solid #ccc;border-radius: 5px;"></div>
+    </div>
+
+    <script>
+    function calculate() {
+        let principal =(document.getElementById("principal").value);
+        let rate = (document.getElementById("rate").value);
+        let years = (document.getElementById("years").value);
+
+        let accruedAmount = principal * (1 + rate);
+        let interest = accruedAmount - principal;
+
+        let result = `
+            <p><strong  style="color: blue;">Accrued Amount:</strong > $${accruedAmount}</p>
+            <p><strong  style="color: blue;">Interest Amount:</strong> $${interest}</p>
+`;
+
+    document.getElementById("result").innerHTML = result;
+}
+    </script>
+
+
+</body>
+</html>
+
